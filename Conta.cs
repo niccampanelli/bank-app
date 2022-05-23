@@ -20,27 +20,30 @@ namespace BankApp
             Random rand = new Random();
             Codigo = rand.Next(1000, 9999).ToString();
             Nome = nome;
+            Taxa = 0.5M;
         }
 
-        public decimal Depositar(decimal quantidade)
+        public virtual decimal Depositar(decimal quantidade)
         {
             Saldo += quantidade;
             return Saldo;
         }
 
-        public decimal Sacar(decimal quantidade)
+        public virtual decimal Sacar(decimal quantidade)
         {
-            Saldo -= quantidade - (Saldo * (Taxa / 100));
+            Saldo -= quantidade + (Saldo * (Taxa / 100));
+            Console.WriteLine();
             return Saldo;
         }
 
-        public void Mostrar()
+        public virtual void Mostrar()
         {
             Console.WriteLine(
-                "Código da Conta: "+Codigo+
+                "\nCódigo da conta: "+Codigo+
                 "\nNome: " +Nome+
-                "\nSaldo: R$"+Saldo+
-                "\nCrédito: R$"+Credito
+                "\nSaldo: R$ "+Saldo+
+                "\nCrédito: R$ "+Credito+
+                "\n"
             );
         }
 
