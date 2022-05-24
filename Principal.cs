@@ -76,6 +76,7 @@ namespace BankApp
                                     break;
 
                                 case "5":
+                                    Console.Clear();
                                     Console.WriteLine("\nSaindo da conta...\n");
                                     CicloContaCorrente = false;
                                     break;
@@ -139,6 +140,7 @@ namespace BankApp
                                     break;
 
                                 case "5":
+                                    Console.Clear();
                                     Console.WriteLine("\nSaindo da conta...\n");
                                     CicloContaPoupanca = false;
                                     break;

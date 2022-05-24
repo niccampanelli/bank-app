@@ -16,7 +16,7 @@ namespace BankApp
             Codigo = rand.Next(1000, 9999).ToString();
             Nome = nome;
             Taxa = 0.5M;
-            Rendimento = 0.1M;
+            Rendimento = 0.12M;
         }
 
         public override decimal Depositar(decimal quantidade)
