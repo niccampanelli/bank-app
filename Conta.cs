@@ -15,11 +15,12 @@ namespace BankApp
         public decimal Credito { get; set; }
         public decimal Taxa { get; set; }
 
-        public Conta(string nome)
+        public Conta(string nome, decimal credito)
         {
             Random rand = new Random();
             Codigo = rand.Next(1000, 9999).ToString();
             Nome = nome;
+            Credito = credito;
             Taxa = 0.5M;
         }
 
@@ -31,8 +32,16 @@ namespace BankApp
 
         public virtual decimal Sacar(decimal quantidade)
         {
-            Saldo -= quantidade + (Saldo * (Taxa / 100));
-            Console.WriteLine();
+            if(Saldo > -(Credito))
+            {
+                Saldo -= Math.Abs(Saldo) * (Taxa / 100);
+                Saldo -= quantidade;
+                Console.WriteLine($"Taxa de {Taxa}% aplicada.");
+            }
+            else
+            {
+                Console.WriteLine("\nLimite de crédito excedido!\n");
+            }
             return Saldo;
         }
 

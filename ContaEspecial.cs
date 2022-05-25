@@ -6,45 +6,16 @@ using System.Threading.Tasks;
 
 namespace BankApp
 {
-    class ContaEspecial
+    class ContaEspecial: Conta
     {
 
-        public string Codigo { get; set; }
-        public string Nome { get; set; }
-        public decimal Saldo { get; set; }
-        public decimal Credito { get; set; }
-        public decimal Taxa { get; set; }
-
-        public ContaEspecial(string nome)
+        public ContaEspecial(string nome, decimal credito): base(nome, credito)
         {
             Random rand = new Random();
             Codigo = rand.Next(1000, 9999).ToString();
             Nome = nome;
+            Credito = credito;
             Taxa = 0.1M;
-        }
-
-        public virtual decimal Depositar(decimal quantidade)
-        {
-            Saldo += quantidade;
-            return Saldo;
-        }
-
-        public virtual decimal Sacar(decimal quantidade)
-        {
-            Saldo -= quantidade + (Saldo * (Taxa / 100));
-            Console.WriteLine();
-            return Saldo;
-        }
-
-        public virtual void Mostrar()
-        {
-            Console.WriteLine(
-                "\nCódigo da conta: " + Codigo +
-                "\nNome: " + Nome +
-                "\nSaldo: R$ " + Saldo +
-                "\nCrédito: R$ " + Credito +
-                "\n"
-            );
         }
     }
 }

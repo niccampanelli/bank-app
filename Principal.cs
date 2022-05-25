@@ -31,7 +31,10 @@ namespace BankApp
                         Console.WriteLine("Digite seu nome completo:");
                         string NomeContaCorrente = Console.ReadLine();
 
-                        Conta ContaCorrente = new Conta(NomeContaCorrente);
+                        Console.WriteLine("\nAgora, escolha quanto crédito sua conta possuirá:");
+                        string CreditoContaCorrente = Console.ReadLine();
+
+                        Conta ContaCorrente = new Conta(NomeContaCorrente, decimal.Parse(CreditoContaCorrente));
 
                         Console.WriteLine("\nConta corrente criada com sucesso!\nInformações da conta criada:");
                         ContaCorrente.Mostrar();
@@ -70,8 +73,8 @@ namespace BankApp
 
                                 case "4":
                                     Console.WriteLine("\nDigite o valor em reais a ser depositado em conta:");
-                                    string Deposito = Console.ReadLine();
-                                    ContaCorrente.Depositar(decimal.Parse(Deposito));
+                                    string DepositoContaCorrente = Console.ReadLine();
+                                    ContaCorrente.Depositar(decimal.Parse(DepositoContaCorrente));
                                     Console.WriteLine("\nDepósito realizado com sucesso!\n");
                                     break;
 
@@ -91,13 +94,16 @@ namespace BankApp
 
                     case "2":
 
-                        Console.WriteLine("\nConta corrente selecionada.");
+                        Console.WriteLine("\nConta Poupança selecionada.");
                         Console.WriteLine("Digite seu nome completo:");
                         string NomeContaPoupanca = Console.ReadLine();
 
-                        ContaPoupanca ContaPoupanca = new ContaPoupanca(NomeContaPoupanca);
+                        Console.WriteLine("\nAgora, escolha quanto crédito sua conta possuirá:");
+                        string CreditoContaPoupanca = Console.ReadLine();
 
-                        Console.WriteLine("\nConta corrente criada com sucesso!\nInformações da conta criada:");
+                        ContaPoupanca ContaPoupanca = new ContaPoupanca(NomeContaPoupanca, decimal.Parse(CreditoContaPoupanca));
+
+                        Console.WriteLine("\nConta poupança criada com sucesso!\nInformações da conta criada:");
                         ContaPoupanca.Mostrar();
 
                         bool CicloContaPoupanca = true;
@@ -154,6 +160,70 @@ namespace BankApp
                         break;
 
                     case "3":
+
+                        Console.WriteLine("\nConta especial selecionada.");
+                        Console.WriteLine("Digite seu nome completo:");
+                        string NomeContaEspecial = Console.ReadLine();
+
+                        Console.WriteLine("\nAgora, escolha quanto crédito sua conta possuirá:");
+                        string CreditoContaEspecial = Console.ReadLine();
+
+                        ContaEspecial ContaEspecial = new ContaEspecial(NomeContaEspecial, decimal.Parse(CreditoContaEspecial));
+
+                        Console.WriteLine("\nConta especial criada com sucesso!\nInformações da conta criada:");
+                        ContaEspecial.Mostrar();
+
+                        bool CicloContaEspecial = true;
+
+                        while (CicloContaEspecial)
+                        {
+                            Console.WriteLine("\nEscolha a operação que deseja realizar:" +
+                                "\n(1) Consultar saldo" +
+                                "\n(2) Consultar crédito" +
+                                "\n(3) Sacar dinheiro" +
+                                "\n(4) Realizar depósito" +
+                                "\n(5) Sair");
+
+                            string OperacaoContaEspecial = Console.ReadLine();
+
+                            switch (OperacaoContaEspecial)
+                            {
+                                case "1":
+                                    Console.WriteLine("\nSeu saldo atual é:\n" +
+                                        "R$ " + ContaEspecial.Saldo);
+                                    break;
+
+                                case "2":
+                                    Console.WriteLine("\nSeu crédito atual é:\n" +
+                                        "R$ " + ContaEspecial.Credito);
+                                    break;
+
+                                case "3":
+                                    Console.WriteLine("\nDigite o valor em reais a ser sacado:");
+                                    string SaqueContaEspecial = Console.ReadLine();
+                                    ContaEspecial.Sacar(decimal.Parse(SaqueContaEspecial));
+                                    Console.WriteLine("\nSaque realizado com sucesso!\n");
+                                    break;
+
+                                case "4":
+                                    Console.WriteLine("\nDigite o valor em reais a ser depositado em conta:");
+                                    string DepositoContaEspecial = Console.ReadLine();
+                                    ContaEspecial.Depositar(decimal.Parse(DepositoContaEspecial));
+                                    Console.WriteLine("\nDepósito realizado com sucesso!\n");
+                                    break;
+
+                                case "5":
+                                    Console.Clear();
+                                    Console.WriteLine("\nSaindo da conta...\n");
+                                    CicloContaEspecial = false;
+                                    break;
+
+                                default:
+                                    Console.WriteLine("\nOperação inválida. Selecione o número de uma das opções.\n");
+                                    break;
+                            }
+                        }
+
                         break;
 
                     case "4":

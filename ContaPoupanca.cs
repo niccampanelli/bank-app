@@ -10,12 +10,13 @@ namespace BankApp
     {
         public decimal Rendimento { get; set; }
 
-        public ContaPoupanca(string nome): base(nome)
+        public ContaPoupanca(string nome, decimal credito) : base(nome, credito)
         {
             Random rand = new Random();
             Codigo = rand.Next(1000, 9999).ToString();
             Nome = nome;
             Taxa = 0.5M;
+            Credito = credito;
             Rendimento = 0.12M;
         }
 
@@ -30,10 +31,19 @@ namespace BankApp
 
         public override decimal Sacar(decimal quantidade)
         {
-            Console.WriteLine($"\nRendimento de {Rendimento}% acrescentado ao saldo.\n" +
-                $"R${Saldo * (Rendimento / 100)} de rendimento.");
-            Saldo += Saldo * (Rendimento / 100);
-            Saldo -= quantidade + (Saldo * (Taxa / 100));
+            if (Saldo > -(Credito))
+            {
+                Console.WriteLine($"\nRendimento de {Rendimento}% acrescentado ao saldo.\n" +
+                    $"R${Saldo * (Rendimento / 100)} de rendimento.");
+                Saldo += Saldo * (Rendimento / 100);
+                Saldo -= Math.Abs(Saldo) * (Taxa / 100);
+                Saldo -= quantidade;
+                Console.WriteLine($"Taxa de {Taxa}% aplicada.");
+            }
+            else
+            {
+                Console.WriteLine("\nLimite de crédito excedido!\n");
+            }
             return Saldo;
         }
 
