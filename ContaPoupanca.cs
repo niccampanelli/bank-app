@@ -26,12 +26,13 @@ namespace BankApp
                 $"R${Saldo * (Rendimento / 100)} de rendimento.");
             Saldo += Saldo * (Rendimento / 100);
             Saldo += quantidade;
+            Console.WriteLine("\nDepósito realizado com sucesso!\n");
             return Saldo;
         }
 
         public override decimal Sacar(decimal quantidade)
         {
-            if (Saldo > -(Credito))
+            if ((Saldo - quantidade) > -(Credito))
             {
                 Console.WriteLine($"\nRendimento de {Rendimento}% acrescentado ao saldo.\n" +
                     $"R${Saldo * (Rendimento / 100)} de rendimento.");
@@ -39,10 +40,15 @@ namespace BankApp
                 Saldo -= Math.Abs(Saldo) * (Taxa / 100);
                 Saldo -= quantidade;
                 Console.WriteLine($"Taxa de {Taxa}% aplicada.");
+                Console.WriteLine("\nSaque realizado com sucesso!\n");
             }
             else
             {
                 Console.WriteLine("\nLimite de crédito excedido!\n");
+                if (Saldo - (-(Credito)) != 0)
+                {
+                    Console.WriteLine($"Valor disponível para saque: {Saldo - (-(Credito))}");
+                }
             }
             return Saldo;
         }

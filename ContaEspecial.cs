@@ -8,7 +8,6 @@ namespace BankApp
 {
     class ContaEspecial: Conta
     {
-
         public ContaEspecial(string nome, decimal credito): base(nome, credito)
         {
             Random rand = new Random();

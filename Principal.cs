@@ -68,14 +68,12 @@ namespace BankApp
                                     Console.WriteLine("\nDigite o valor em reais a ser sacado:");
                                     string SaqueContaCorrente = Console.ReadLine();
                                     ContaCorrente.Sacar(decimal.Parse(SaqueContaCorrente));
-                                    Console.WriteLine("\nSaque realizado com sucesso!\n");
                                     break;
 
                                 case "4":
                                     Console.WriteLine("\nDigite o valor em reais a ser depositado em conta:");
                                     string DepositoContaCorrente = Console.ReadLine();
                                     ContaCorrente.Depositar(decimal.Parse(DepositoContaCorrente));
-                                    Console.WriteLine("\nDepósito realizado com sucesso!\n");
                                     break;
 
                                 case "5":
@@ -135,14 +133,12 @@ namespace BankApp
                                     Console.WriteLine("\nDigite o valor em reais a ser sacado:");
                                     string SaqueContaPoupanca = Console.ReadLine();
                                     ContaPoupanca.Sacar(decimal.Parse(SaqueContaPoupanca));
-                                    Console.WriteLine("\nSaque realizado com sucesso!\n");
                                     break;
 
                                 case "4":
                                     Console.WriteLine("\nDigite o valor em reais a ser depositado em conta:");
                                     string DepositoContaPoupanca = Console.ReadLine();
                                     ContaPoupanca.Depositar(decimal.Parse(DepositoContaPoupanca));
-                                    Console.WriteLine("\nDepósito realizado com sucesso!\n");
                                     break;
 
                                 case "5":
@@ -202,14 +198,12 @@ namespace BankApp
                                     Console.WriteLine("\nDigite o valor em reais a ser sacado:");
                                     string SaqueContaEspecial = Console.ReadLine();
                                     ContaEspecial.Sacar(decimal.Parse(SaqueContaEspecial));
-                                    Console.WriteLine("\nSaque realizado com sucesso!\n");
                                     break;
 
                                 case "4":
                                     Console.WriteLine("\nDigite o valor em reais a ser depositado em conta:");
                                     string DepositoContaEspecial = Console.ReadLine();
                                     ContaEspecial.Depositar(decimal.Parse(DepositoContaEspecial));
-                                    Console.WriteLine("\nDepósito realizado com sucesso!\n");
                                     break;
 
                                 case "5":
